@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="This is my 1st suit">
+    
+    <test name="Test 1">
+        
+        <classes >
+            <class name="testcases.HardandSoftAsserts"></class>
+            <class name="testcases.Calculator"></class>
+        </classes>
+        
+
+    </test>   
+
+    
+    
+</suite>

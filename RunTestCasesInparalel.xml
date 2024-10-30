@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="This is my 1st suit">
+    
+    <test name="Running this cases in paralel" parallel="methods" thread-count="2">
+
+        <classes>
+            <class name="testcases.Sauselabs"></class>
+            <class name="testcases.Sauselabs2"></class>
+        </classes>
+
+    </test>
+    
+    
+</suite>
