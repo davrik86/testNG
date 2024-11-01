@@ -1,6 +1,7 @@
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,12 +21,23 @@ public class Homework {
     @Test
     public void testCaseOne(){
         baseURI = "https://petstore3.swagger.io";
-        given().get("/api/v3/pet/22112")
+        given()
+                .contentType("application/json")//this is optional
+                .when()//this is optional
+                .get("/api/v3/pet/22112")
                 .then()
                 .statusCode(200)
                 .body("name", equalTo("booboo"))
                 .body("status", equalTo("available"));
 
+    }
+
+    @Test
+    public void testCaseOne1(){
+        Response response= RestAssured.get("https://petstore.swagger.io/v2/pet/22112");
+        response.then().statusCode(200);
+        response.then().contentType("application/json");
+        response.then().body("name", Matchers.equalTo("booboo"));
     }
 
     /**
@@ -37,23 +49,23 @@ public class Homework {
 
     @Test
     public void testCaseTwo() {
-        Response response = RestAssured.get("https://petstore3.swagger.io/api/v3/pet/201029");
+        Response response = RestAssured.get("https://petstore.swagger.io/v2/pet/201029");
         Assert.assertEquals(response.getStatusCode(), 404);
         System.out.println("Content type " + response.getContentType());
         Assert.assertEquals(response.getContentType(), "application/json");
         System.out.println("this is response body " + response.getBody().asString());
-        Assert.assertEquals(response.getBody().asString(), "Pet not found");
+        Assert.assertEquals(response.jsonPath().getString("message"), ("Pet not found"));
     }
     @Test
     public void testcaseTwo2(){
-//        baseURI="https://petstore3.swager.io/api";
+        baseURI="https://petstore.swagger.io";
         given()
 
-                .get("https://petstore3.swager.io/api/v3/pet/201029")
+                .get("/v2/pet/201029")
                 .then()
                 .statusCode( 404)
                 .contentType("application/json")
-                .body(equalTo("Pet not found"));
+                .body("message", equalTo("Pet not found"));
 
 
     }
