@@ -57,7 +57,7 @@ public class postRequest {
          */
 
         Response response = RestAssured.given()
-                .header("ContentType", "application/jsom") //optional
+                .header("ContentType", "application/json") //optional
                 .body(requestBody)
                 .when()
                 .post("/api/users");//endpoint to show where we are creating

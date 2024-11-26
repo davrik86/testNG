@@ -13,7 +13,7 @@ public class PUTrequest {
     public void homeWork2() {
         JSONObject requestBody = new JSONObject();
         requestBody.put("id", 16789);
-        requestBody.put("name", "s12uperstar-option2");
+        requestBody.put("name", "s12uperstaon2");
         baseURI = "https://petstore.swagger.io";
 
 
